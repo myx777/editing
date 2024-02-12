@@ -1,6 +1,6 @@
-import { combineReducers, createStore } from "redux";
-import numberReducer from "./numberRedux";
-import stringReducer from "./stringRedux";
+import { createStore, combineReducers, compose } from "redux";
+import inputsFieldsReducer from "./inputsFieldsReducer";
+import listsAddedFormReducer from "./listsAddedFormReducer";
 
 const ReactReduxDevTools =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
@@ -8,10 +8,10 @@ const ReactReduxDevTools =
 const configureStore = () => {
   return createStore(
     combineReducers({
-      number: numberReducer,
-      string: stringReducer,
+      inputsFields: inputsFieldsReducer,
+      listsAddedForm: listsAddedFormReducer,
     }),
-    ReactReduxDevTools
+    compose(ReactReduxDevTools)
   );
 };
 
