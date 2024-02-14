@@ -1,5 +1,6 @@
-import { CHANGE_ITEM, EDIT_ITEM } from "./actionsTypes";
-import { ActionType, ChangeItemType } from "./types/types";
+import { ActionType, ChangeItemType } from "../../components/types/types";
+import { CHANGE_ITEM, EDIT_ITEM } from "../action/actionsTypes";
+
 
 /**
  * Интициализация глобального state для inputFields

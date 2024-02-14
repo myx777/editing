@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, changeItem } from "../redux/actionsCreators";
-import { RootState } from "../redux/types/types";
+import { addItem, changeItem } from "../redux/action/actionsCreators";
+import { RootState } from "./types/types";
+
 /**
 * Компонент для ввода данных.
 * @returns {JSX.Element} Компонент для ввода данных.

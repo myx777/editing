@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { editItem, removeItem } from "../redux/actionsCreators";
-import { ItemType, RootState } from "../redux/types/types";
+import { removeItem, editItem } from "../redux/action/actionsCreators";
+import { RootState, ItemType } from "./types/types";
+
 
 /**
  * Компонент для отображения списка элементов и их редактирования.
@@ -12,13 +13,30 @@ const ListsAddedForm = () => {
    * @type {ItemType[]}
    */
   const items = useSelector((state: RootState) => state.listsAddedForm);
+  const filteredItems = useSelector((state) => state.searchItem)  
 
-  /**
+   /**
    * Диспетчер Redux.
    * @type {Function}
    */
-  const dispatch = useDispatch();
+   const dispatch = useDispatch();
 
+  let itemsForRender: ItemType[] = [];
+
+  console.info(items);
+  console.info(filteredItems);
+  
+  if(filteredItems.length !== 0) {
+    filteredItems.forEach((item) => {
+      itemsForRender.push(item);
+      
+    });
+  } else {
+    items.forEach((item) => {
+      itemsForRender.push(item);
+    });
+  }
+  
   /**
    * Обработчик удаления элемента из списка.
    * @param {string | undefined} id - Идентификатор элемента.
@@ -50,7 +68,7 @@ const ListsAddedForm = () => {
   return (
     <>
       <ul>
-        {items.map((item: ItemType) => (
+        {itemsForRender.map((item: ItemType) => (
           <li key={item.id}>
             {item.name} {item.price}
             <button onClick={() => handleRemove(item.id)}>X</button>

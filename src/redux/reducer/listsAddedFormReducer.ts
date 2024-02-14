@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
-import { ADD_ITEM, DELETE_ITEM } from "./actionsTypes";
-import { ActionType, ItemType } from "./types/types";
+import { ADD_ITEM, DELETE_ITEM } from "../action/actionsTypes";
+import { ItemType, ActionType } from "../../components/types/types";
+
 
 const initialState: ItemType[] = [];
 /**

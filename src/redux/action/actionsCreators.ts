@@ -1,5 +1,6 @@
-import { ADD_ITEM, CHANGE_ITEM, DELETE_ITEM, EDIT_ITEM } from "./actionsTypes";
-import { ActionType } from "./types/types";
+import { ActionType } from "../../components/types/types";
+import { ADD_ITEM, DELETE_ITEM, EDIT_ITEM, CHANGE_ITEM, SEARCH_ITEM } from "./actionsTypes";
+
 
 export const addItem = (name: string, price: number): ActionType => {
   return { type: ADD_ITEM, payload: { name, price } };
@@ -16,3 +17,7 @@ export const editItem = (id: string, name: string, price: number): ActionType =>
 export const changeItem = (name: string, value: string | number): ActionType => {
   return { type: CHANGE_ITEM, payload: { name, value } };
 };
+
+export const searchItem = (items): ActionType => {
+  return { type: SEARCH_ITEM, payload: items };
+}
