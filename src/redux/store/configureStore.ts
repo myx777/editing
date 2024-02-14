@@ -3,9 +3,13 @@ import inputsFieldsReducer from "../reducer/inputsFieldsReducer";
 import listsAddedFormReducer from "../reducer/listsAddedFormReducer";
 import searchItemReducer from "../reducer/searchItemReducer";
 
-const ReactReduxDevTools =
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+// Проверка наличия Redux DevTools Extension
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+/**
+ * Конфигурация Redux store.
+ * @returns {Object} Новый экземпляр Redux store.
+ */
 const configureStore = () => {
   return createStore(
     combineReducers({
@@ -13,7 +17,7 @@ const configureStore = () => {
       listsAddedForm: listsAddedFormReducer,
       searchItem: searchItemReducer,
     }),
-    compose(ReactReduxDevTools)
+    composeEnhancers()
   );
 };
 
